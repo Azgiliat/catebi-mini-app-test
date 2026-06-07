@@ -5,10 +5,11 @@ import vue from "@vitejs/plugin-vue";
 import { defineConfig } from "vite";
 import vueDevTools from "vite-plugin-vue-devtools";
 
-import {svgSpritePlugin} from "./plugins/svg-sprite.ts";
+import { svgSpritePlugin } from "./plugins/svg-sprite.ts";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: process.env.GITHUB_PAGES === "true" ? "/catebi-mini-app-test/" : "/",
   plugins: [svgSpritePlugin(), tailwindcss(), vue(), vueDevTools()],
   resolve: {
     alias: {
