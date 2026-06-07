@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  /* CATEBI Brand Colors */
+  --color-catebi: #ff5d03;
+  --color-catebi-light: #ffece6;
+  --color-catebi-dark: #e55302;
+}
+
+@layer base {
+  body {
+    background-color: #ffffff;
+    color: #1f2124;
+  }
+}
