@@ -1,0 +1,67 @@
+{
+  "app": {
+    "homeAriaLabel": "Catebi მთავარი გვერდი",
+    "navigation": {
+      "cats": "კატები",
+      "profile": "პროფილი"
+    }
+  },
+  "adoptionList": {
+    "title": "ეძებენ სახლს",
+    "filtersTitle": "ფილტრები",
+    "openFiltersAriaLabel": "ფილტრების გახსნა",
+    "catsFound": "ნაპოვნია {count} კატა",
+    "values": {
+      "sex": {
+        "female": "მდედრი",
+        "male": "მამრი"
+      },
+      "age": {
+        "sixMonths": "6 თვე",
+        "threeMonths": "3 თვე",
+        "twoYears": "2 წელი",
+        "fourMonths": "4 თვე",
+        "fiveMonths": "5 თვე",
+        "oneYear": "1 წელი"
+      },
+      "color": {
+        "brownTabby": "ყავისფერი ტაბი",
+        "orangeTabby": "ნარინჯისფერი ტაბი",
+        "calico": "სამფერიანი",
+        "whiteWithBlackPatches": "თეთრი შავი ლაქებით",
+        "silverTabby": "ვერცხლისფერი ტაბი",
+        "blackAndBrownMix": "შავი და ყავისფერი მიქსი"
+      }
+    },
+    "filterGroups": {
+      "sex": "სქესი",
+      "age": "ასაკი",
+      "color": "ფერი"
+    },
+    "filterPanel": {
+      "groupsAriaLabel": "ფილტრების ჯგუფები",
+      "any": "ნებისმიერი",
+      "clear": "გასუფთავება",
+      "apply": "გამოყენება"
+    }
+  },
+  "catCard": {
+    "addToLikedAriaLabel": "{name}-ის დამატება მოწონებულებში",
+    "removeFromLikedAriaLabel": "{name}-ის ამოღება მოწონებულებიდან"
+  },
+  "common": {
+    "closeFiltersAriaLabel": "ფილტრების დახურვა"
+  },
+  "profile": {
+    "title": "პროფილი",
+    "role": "შვილად აყვანის კანდიდატი",
+    "items": {
+      "likedCats": "მოწონებული კატები",
+      "applications": "განაცხადები"
+    },
+    "values": {
+      "none": "არ არის",
+      "applicationsActive": "1 აქტიური"
+    }
+  }
+}

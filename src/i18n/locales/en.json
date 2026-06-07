@@ -1,0 +1,67 @@
+{
+  "app": {
+    "homeAriaLabel": "Catebi home",
+    "navigation": {
+      "cats": "Cats",
+      "profile": "Profile"
+    }
+  },
+  "adoptionList": {
+    "title": "Available for Adoption",
+    "filtersTitle": "Filters",
+    "openFiltersAriaLabel": "Open filters",
+    "catsFound": "{count} cats found",
+    "values": {
+      "sex": {
+        "female": "Female",
+        "male": "Male"
+      },
+      "age": {
+        "sixMonths": "6 months",
+        "threeMonths": "3 months",
+        "twoYears": "2 years",
+        "fourMonths": "4 months",
+        "fiveMonths": "5 months",
+        "oneYear": "1 year"
+      },
+      "color": {
+        "brownTabby": "Brown Tabby",
+        "orangeTabby": "Orange Tabby",
+        "calico": "Calico",
+        "whiteWithBlackPatches": "White with Black Patches",
+        "silverTabby": "Silver Tabby",
+        "blackAndBrownMix": "Black and Brown Mix"
+      }
+    },
+    "filterGroups": {
+      "sex": "Sex",
+      "age": "Age",
+      "color": "Color"
+    },
+    "filterPanel": {
+      "groupsAriaLabel": "Filter groups",
+      "any": "Any",
+      "clear": "Clear Filters",
+      "apply": "Apply"
+    }
+  },
+  "catCard": {
+    "addToLikedAriaLabel": "Add {name} to liked cats",
+    "removeFromLikedAriaLabel": "Remove {name} from liked cats"
+  },
+  "common": {
+    "closeFiltersAriaLabel": "Close filters"
+  },
+  "profile": {
+    "title": "Profile",
+    "role": "Adoption applicant",
+    "items": {
+      "likedCats": "Liked cats",
+      "applications": "Applications"
+    },
+    "values": {
+      "none": "None",
+      "applicationsActive": "1 active"
+    }
+  }
+}

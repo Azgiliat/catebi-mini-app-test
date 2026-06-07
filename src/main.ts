@@ -4,6 +4,7 @@ import { createPinia } from "pinia";
 import { createApp } from "vue";
 
 import App from "./App.vue";
+import { createAppI18n } from "./i18n";
 import { router } from "./router";
 
 if (import.meta.env.DEV) {
@@ -12,4 +13,8 @@ if (import.meta.env.DEV) {
   await installTelegramMock();
 }
 
-createApp(App).use(createPinia()).use(router).mount("#app");
+createApp(App)
+  .use(createPinia())
+  .use(createAppI18n())
+  .use(router)
+  .mount("#app");

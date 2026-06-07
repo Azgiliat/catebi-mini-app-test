@@ -1,0 +1,67 @@
+{
+  "app": {
+    "homeAriaLabel": "На главную Catebi",
+    "navigation": {
+      "cats": "Коты",
+      "profile": "Профиль"
+    }
+  },
+  "adoptionList": {
+    "title": "Ищут дом",
+    "filtersTitle": "Фильтры",
+    "openFiltersAriaLabel": "Открыть фильтры",
+    "catsFound": "Найдено котов: {count}",
+    "values": {
+      "sex": {
+        "female": "Девочка",
+        "male": "Мальчик"
+      },
+      "age": {
+        "sixMonths": "6 месяцев",
+        "threeMonths": "3 месяца",
+        "twoYears": "2 года",
+        "fourMonths": "4 месяца",
+        "fiveMonths": "5 месяцев",
+        "oneYear": "1 год"
+      },
+      "color": {
+        "brownTabby": "Коричневый табби",
+        "orangeTabby": "Рыжий табби",
+        "calico": "Трехцветный",
+        "whiteWithBlackPatches": "Белый с черными пятнами",
+        "silverTabby": "Серебристый табби",
+        "blackAndBrownMix": "Черно-коричневый микс"
+      }
+    },
+    "filterGroups": {
+      "sex": "Пол",
+      "age": "Возраст",
+      "color": "Окрас"
+    },
+    "filterPanel": {
+      "groupsAriaLabel": "Группы фильтров",
+      "any": "Любой",
+      "clear": "Сбросить",
+      "apply": "Применить"
+    }
+  },
+  "catCard": {
+    "addToLikedAriaLabel": "Добавить {name} в понравившиеся",
+    "removeFromLikedAriaLabel": "Убрать {name} из понравившихся"
+  },
+  "common": {
+    "closeFiltersAriaLabel": "Закрыть фильтры"
+  },
+  "profile": {
+    "title": "Профиль",
+    "role": "Кандидат на усыновление",
+    "items": {
+      "likedCats": "Понравившиеся коты",
+      "applications": "Заявки"
+    },
+    "values": {
+      "none": "Нет",
+      "applicationsActive": "1 активная"
+    }
+  }
+}

@@ -1,5 +1,6 @@
 export interface FilterGroup {
-  label: string;
+  key: keyof Pick<Cat, "sex" | "age" | "color">;
+  labelKey: string;
   options: string[];
 }
 

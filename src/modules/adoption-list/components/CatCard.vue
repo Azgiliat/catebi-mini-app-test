@@ -20,8 +20,8 @@
           type="button"
           :aria-label="
             isCatLiked
-              ? `Remove ${cat.name} from liked cats`
-              : `Add ${cat.name} to liked cats`
+              ? t('catCard.removeFromLikedAriaLabel', { name: cat.name })
+              : t('catCard.addToLikedAriaLabel', { name: cat.name })
           "
           @click="onLikeClick()"
         >
@@ -36,15 +36,15 @@
         </button>
       </div>
       <p class="mt-1 flex items-center gap-2 text-sm leading-5 text-gray-600">
-        <span>{{ cat.sex }}</span>
+        <span>{{ t(cat.sex) }}</span>
         <span class="text-base leading-none text-gray-400">&bull;</span>
-        <span>{{ cat.age }}</span>
+        <span>{{ t(cat.age) }}</span>
       </p>
       <div class="mt-2">
         <span
           class="bg-catebi-light text-catebi inline-flex max-w-full rounded-full px-3 py-1 text-xs leading-4"
         >
-          {{ cat.color }}
+          {{ t(cat.color) }}
         </span>
       </div>
     </div>
@@ -53,6 +53,7 @@
 
 <script setup lang="ts">
 import { computed, toRef } from "vue";
+import { useI18n } from "vue-i18n";
 
 import Icon from "@/common/components/Icon.vue";
 import { useLikesStore } from "@/stores/likes.store.ts";
@@ -63,6 +64,7 @@ const props = defineProps<{
   cat: Cat;
 }>();
 
+const { t } = useI18n();
 const likesStore = useLikesStore();
 const likes = toRef(() => likesStore.likes);
 

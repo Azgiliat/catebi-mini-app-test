@@ -1,20 +1,28 @@
 <template>
   <section class="px-4 py-4">
-    <h1 class="text-2xl leading-8 font-medium text-gray-800">Profile</h1>
+    <h1 class="text-2xl leading-8 font-medium text-gray-800">
+      {{ t("profile.title") }}
+    </h1>
     <div class="mt-4 rounded border border-gray-200 bg-white p-4">
       <div class="flex items-center gap-3">
+        <img
+          v-if="imageUrl"
+          :src="imageUrl"
+          :alt="fullName"
+          class="size-14 rounded-full object-cover"
+        />
         <div
+          v-else
           class="bg-catebi-light text-catebi grid size-14 place-items-center rounded-full text-xl font-semibold"
         >
-          <img
-            :src="imageUrl"
-            :alt="name"
-            class="size-full rounded-full"
-          />
+          {{ initials }}
         </div>
         <div>
           <p class="text-lg leading-7 text-gray-900">
-            {{ name }} {{ surname }}
+            {{ fullName }}
+          </p>
+          <p class="text-sm leading-5 text-gray-600">
+            {{ t("profile.role") }}
           </p>
         </div>
       </div>
@@ -22,10 +30,12 @@
     <div class="mt-4 rounded border border-gray-200 bg-white">
       <div
         v-for="item in profileItems"
-        :key="item.label"
+        :key="item.labelKey"
         class="flex items-center justify-between border-b border-gray-100 px-4 py-3 last:border-b-0"
       >
-        <span class="text-sm leading-5 text-gray-700">{{ item.label }}</span>
+        <span class="text-sm leading-5 text-gray-700">
+          {{ item.labelKey }}
+        </span>
         <span class="text-sm leading-5 text-gray-900">{{ item.value }}</span>
       </div>
     </div>
@@ -34,15 +44,38 @@
 
 <script setup lang="ts">
 import { computed, toRefs } from "vue";
+import { useI18n } from "vue-i18n";
 
 import { useLikesStore } from "@/stores/likes.store.ts";
 import { useUserStore } from "@/stores/user.store.ts";
 
+const { t } = useI18n();
 const { name, surname, imageUrl } = toRefs(useUserStore());
 const { likes } = toRefs(useLikesStore());
 
+const isNonEmptyString = (value: string | undefined): value is string => {
+  return Boolean(value);
+};
+
+const fullName = computed(() =>
+  [name.value, surname.value].filter(isNonEmptyString).join(" "),
+);
+const initials = computed(() =>
+  [name.value, surname.value]
+    .filter(isNonEmptyString)
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase(),
+);
+const likedCats = computed(() => Array.from(likes.value).join(", "));
 const profileItems = computed(() => [
-  { label: "Liked cats", value: Array.from(likes.value).join(", ") },
-  { label: "Applications", value: "1 active" },
+  {
+    labelKey: t("profile.items.likedCats"),
+    value: likedCats.value || t("profile.values.none"),
+  },
+  {
+    labelKey: t("profile.items.applications"),
+    value: t("profile.values.applicationsActive"),
+  },
 ]);
 </script>

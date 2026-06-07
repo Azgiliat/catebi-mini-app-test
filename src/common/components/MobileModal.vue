@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { cloneVNode, h, ref, type VNode } from "vue";
+import { useI18n } from "vue-i18n";
 
 import Icon from "@/common/components/Icon.vue";
 
@@ -12,6 +13,7 @@ const slots = defineSlots<{
   modal(): VNode[];
 }>();
 
+const { t } = useI18n();
 const isOpen = ref(false);
 const toggleModalState = () => {
   isOpen.value = !isOpen.value;
@@ -52,7 +54,7 @@ const ModalWithClose = () =>
           <button
             class="flex place-items-center rounded-full p-2 text-gray-700 transition-colors hover:bg-gray-100"
             type="button"
-            aria-label="Close filters"
+            :aria-label="t('common.closeFiltersAriaLabel')"
             @click="isOpen = false"
           >
             <Icon

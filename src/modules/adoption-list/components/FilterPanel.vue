@@ -4,11 +4,11 @@
   >
     <nav
       class="border-r border-gray-200 bg-white"
-      aria-label="Filter groups"
+      :aria-label="t('adoptionList.filterPanel.groupsAriaLabel')"
     >
       <button
         v-for="(group, index) in filters"
-        :key="group.label"
+        :key="group.labelKey"
         class="relative flex h-[57px] w-full items-center border-b border-gray-100 px-4 text-left text-base leading-6 transition-colors"
         :class="
           activeGroupIndex === index
@@ -23,14 +23,14 @@
           class="bg-catebi absolute inset-y-0 left-0 w-1"
           aria-hidden="true"
         />
-        <span>{{ group.label }}</span>
+        <span>{{ t(group.labelKey) }}</span>
       </button>
     </nav>
     <div class="overflow-y-auto px-4 py-4">
       <h3
         class="text-sm leading-5 font-medium tracking-wide text-gray-600 uppercase"
       >
-        {{ activeGroup.label }}
+        {{ t(activeGroup.labelKey) }}
       </h3>
       <div class="mt-4 space-y-3">
         <label
@@ -55,12 +55,12 @@
           <input
             class="sr-only"
             type="radio"
-            :name="activeGroup.label"
+            :name="activeGroup.labelKey"
             :value="option"
             :checked="isSelected(option)"
             @change="selectOption(option)"
           />
-          <span>{{ option }}</span>
+          <span>{{ getOptionLabel(option) }}</span>
         </label>
       </div>
     </div>
@@ -71,24 +71,27 @@
       type="button"
       @click="$emit('clear')"
     >
-      Clear Filters
+      {{ t("adoptionList.filterPanel.clear") }}
     </button>
     <button
       class="bg-catebi hover:bg-catebi-dark h-12 rounded-lg text-base leading-6 text-white transition-colors"
       type="button"
       @click="apply"
     >
-      Apply
+      {{ t("adoptionList.filterPanel.apply") }}
     </button>
   </footer>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { useI18n } from "vue-i18n";
 
 import type { FilterGroup, FilterSelection } from "../types";
 
-const ANY_OPTION = "Any";
+const ANY_OPTION = "__any__";
+
+const { t } = useI18n();
 
 const props = defineProps<{
   filters: FilterGroup[];
@@ -111,15 +114,19 @@ const visibleOptions = computed(() => [
 ]);
 
 function isSelected(option: string) {
-  const value = props.selectedFilters[activeGroup.value.label];
+  const value = props.selectedFilters[activeGroup.value.labelKey];
 
   return option === ANY_OPTION ? !value : value === option;
+}
+
+function getOptionLabel(option: string) {
+  return option === ANY_OPTION ? t("adoptionList.filterPanel.any") : t(option);
 }
 
 function selectOption(option: string) {
   emit(
     "select",
-    activeGroup.value.label,
+    activeGroup.value.labelKey,
     option === ANY_OPTION ? null : option,
   );
 }

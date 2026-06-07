@@ -9,7 +9,7 @@
         <RouterLink
           class="flex items-center gap-2 text-white"
           :to="{ name: ADOPTION_LIST_ROUTE_NAMES.ADOPTION_LIST }"
-          aria-label="Catebi home"
+          :aria-label="t('app.homeAriaLabel')"
         >
           <span class="text-catebi grid size-8 place-items-center rounded-full">
             <Icon
@@ -39,7 +39,7 @@
             :name="item.icon"
             aria-hidden="true"
           />
-          <span>{{ item.label }}</span>
+          <span>{{ t(item.labelKey) }}</span>
         </RouterLink>
       </nav>
     </div>
@@ -47,6 +47,7 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
 import { RouterLink, RouterView, useRoute } from "vue-router";
 
 import Icon from "./common/components/Icon.vue";
@@ -60,6 +61,7 @@ import {
 } from "./modules/profile/route-names";
 
 const route = useRoute();
+const { t } = useI18n();
 
 type RouteName = AdoptionListRouteName | ProfileRouteName;
 
@@ -68,7 +70,7 @@ interface NavigationItem {
   to: {
     name: RouteName;
   };
-  label: string;
+  labelKey: string;
   icon: "cats" | "profile";
 }
 
@@ -76,13 +78,13 @@ const navigation: NavigationItem[] = [
   {
     routeName: ADOPTION_LIST_ROUTE_NAMES.ADOPTION_LIST,
     to: { name: ADOPTION_LIST_ROUTE_NAMES.ADOPTION_LIST },
-    label: "Cats",
+    labelKey: "app.navigation.cats",
     icon: "cats",
   },
   {
     routeName: PROFILE_ROUTE_NAMES.PROFILE,
     to: { name: PROFILE_ROUTE_NAMES.PROFILE },
-    label: "Profile",
+    labelKey: "app.navigation.profile",
     icon: "profile",
   },
 ];
