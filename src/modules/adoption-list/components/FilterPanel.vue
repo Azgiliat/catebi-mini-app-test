@@ -27,11 +27,6 @@
       </button>
     </nav>
     <div class="overflow-y-auto px-4 py-4">
-      <h3
-        class="text-sm leading-5 font-medium tracking-wide text-gray-600 uppercase"
-      >
-        {{ t(activeGroup.labelKey) }}
-      </h3>
       <div class="mt-4 space-y-3">
         <label
           v-for="option in visibleOptions"

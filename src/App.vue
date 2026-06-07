@@ -4,20 +4,19 @@
       class="mx-auto flex min-h-screen w-full max-w-xl min-w-xs flex-col bg-white shadow-sm"
     >
       <header
-        class="bg-catebi pt-tg-safe-top sticky top-0 z-20 flex h-16 items-center justify-center px-4"
+        class="bg-catebi sticky top-0 z-20 flex items-center justify-center p-4"
       >
         <RouterLink
           class="flex items-center gap-2 text-white"
           :to="{ name: ADOPTION_LIST_ROUTE_NAMES.ADOPTION_LIST }"
           :aria-label="t('app.homeAriaLabel')"
         >
-          <span class="text-catebi grid size-8 place-items-center rounded-full">
-            <Icon
-              class="size-5"
-              name="catebi-logo"
-              aria-hidden="true"
-            />
-          </span>
+          <Icon
+            class="text-catebi size-8"
+            name="catebi-logo"
+            aria-hidden="true"
+          />
+
           <span class="text-sm font-extrabold tracking-wide">CATEBI</span>
         </RouterLink>
       </header>
