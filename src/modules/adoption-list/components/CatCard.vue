@@ -8,30 +8,32 @@
         :src="cat.image"
         :alt="cat.name"
         loading="lazy"
-      >
-      <button
-        class="absolute top-2 right-2 grid size-10 place-items-center rounded-full bg-white/90 text-gray-900 opacity-0 shadow-lg backdrop-blur transition-opacity duration-200 group-focus-within:opacity-100 group-hover:opacity-100"
-        type="button"
-        :aria-label="
-          cat.isLiked
-            ? `Remove ${cat.name} from liked cats`
-            : `Add ${cat.name} to liked cats`
-        "
-      >
-        <Icon
-          class="size-5"
-          :class="
-            cat.isLiked ? 'text-catebi fill-current' : 'fill-none text-gray-900'
-          "
-          name="heart"
-          aria-hidden="true"
-        />
-      </button>
+      />
     </div>
     <div class="p-3">
-      <h2 class="truncate text-lg leading-7 font-normal text-gray-900">
-        {{ cat.name }}
-      </h2>
+      <div class="flex items-center gap-2">
+        <h2 class="truncate text-lg leading-7 font-normal text-gray-900">
+          {{ cat.name }}
+        </h2>
+        <button
+          class="ml-auto block size-5 min-w-5"
+          type="button"
+          :aria-label="
+            isCatLiked
+              ? `Remove ${cat.name} from liked cats`
+              : `Add ${cat.name} to liked cats`
+          "
+        >
+          <Icon
+            class="size-full"
+            :class="
+              isCatLiked ? 'text-catebi fill-catebi' : 'fill-none text-gray-400'
+            "
+            name="heart"
+            aria-hidden="true"
+          />
+        </button>
+      </div>
       <p class="mt-1 flex items-center gap-2 text-sm leading-5 text-gray-600">
         <span>{{ cat.sex }}</span>
         <span class="text-base leading-none text-gray-400">&bull;</span>
@@ -49,11 +51,19 @@
 </template>
 
 <script setup lang="ts">
+import { computed, toRef } from "vue";
+
 import Icon from "@/common/components/Icon.vue";
+import { useLikesStore } from "@/stores/likes.store.ts";
 
 import type { Cat } from "../types";
 
-defineProps<{
+const props = defineProps<{
   cat: Cat;
 }>();
+
+const likesStore = useLikesStore();
+const likes = toRef(() => likesStore.likes);
+
+const isCatLiked = computed(() => likes.value.has(props.cat.name));
 </script>

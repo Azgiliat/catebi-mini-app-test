@@ -10,6 +10,33 @@ type WebAppUser = {
   photo_url?: string;
 };
 
+type CloudStorageCallback<T> = (error: string | null, result: T) => void;
+
+type TelegramCloudStorage = {
+  setItem: (
+    key: string,
+    value: string,
+    callback?: CloudStorageCallback<boolean>,
+  ) => TelegramCloudStorage;
+  getItem: (
+    key: string,
+    callback: CloudStorageCallback<string>,
+  ) => TelegramCloudStorage;
+  getItems: (
+    keys: string[],
+    callback: CloudStorageCallback<Record<string, string>>,
+  ) => TelegramCloudStorage;
+  removeItem: (
+    key: string,
+    callback?: CloudStorageCallback<boolean>,
+  ) => TelegramCloudStorage;
+  removeItems: (
+    keys: string[],
+    callback?: CloudStorageCallback<boolean>,
+  ) => TelegramCloudStorage;
+  getKeys: (callback: CloudStorageCallback<string[]>) => TelegramCloudStorage;
+};
+
 type TelegramWebApp = {
   initData: string;
   initDataUnsafe: {
@@ -18,13 +45,14 @@ type TelegramWebApp = {
     query_id: string;
     user: WebAppUser;
   };
+  CloudStorage: TelegramCloudStorage;
   ready: () => void;
   expand: () => void;
 };
 
 declare global {
   interface Window {
-    Telegram?: {
+    Telegram: {
       WebApp: TelegramWebApp;
     };
   }
@@ -37,6 +65,171 @@ const mockUser: WebAppUser = {
   username: "local_catebi_user",
   language_code: "ru",
   photo_url: "https://t.me/i/userpic/320/local_catebi_user.jpg",
+};
+
+const CLOUD_STORAGE_LOCAL_STORAGE_KEY = "catebi:telegram-cloud-storage";
+const CLOUD_STORAGE_KEY_PATTERN = /^[A-Za-z0-9_-]{1,128}$/;
+const CLOUD_STORAGE_MAX_ITEMS = 1024;
+const CLOUD_STORAGE_MAX_VALUE_LENGTH = 4096;
+
+const readCloudStorage = () => {
+  const value = window.localStorage.getItem(CLOUD_STORAGE_LOCAL_STORAGE_KEY);
+
+  if (!value) {
+    return {};
+  }
+
+  try {
+    const parsedValue: unknown = JSON.parse(value);
+
+    if (!parsedValue || typeof parsedValue !== "object") {
+      return {};
+    }
+
+    return Object.fromEntries(
+      Object.entries(parsedValue).filter(
+        ([key, storageValue]) =>
+          CLOUD_STORAGE_KEY_PATTERN.test(key) &&
+          typeof storageValue === "string",
+      ),
+    );
+  } catch {
+    return {};
+  }
+};
+
+const writeCloudStorage = (storage: Record<string, string>) => {
+  window.localStorage.setItem(
+    CLOUD_STORAGE_LOCAL_STORAGE_KEY,
+    JSON.stringify(storage),
+  );
+};
+
+const validateCloudStorageKey = (key: string) => {
+  if (!CLOUD_STORAGE_KEY_PATTERN.test(key)) {
+    return "Invalid key";
+  }
+
+  return null;
+};
+
+const validateCloudStorageKeys = (keys: string[]) => {
+  const invalidKey = keys.find((key) => validateCloudStorageKey(key));
+
+  if (invalidKey) {
+    return validateCloudStorageKey(invalidKey);
+  }
+
+  return null;
+};
+
+const createTelegramCloudStorageMock = (): TelegramCloudStorage => {
+  const cloudStorage: TelegramCloudStorage = {
+    setItem: (key, value, callback) => {
+      const keyError = validateCloudStorageKey(key);
+
+      if (keyError) {
+        callback?.(keyError, false);
+
+        return cloudStorage;
+      }
+
+      if (value.length > CLOUD_STORAGE_MAX_VALUE_LENGTH) {
+        callback?.("Value is too long", false);
+
+        return cloudStorage;
+      }
+
+      const storage = readCloudStorage();
+      const isNewKey = !(key in storage);
+
+      if (isNewKey && Object.keys(storage).length >= CLOUD_STORAGE_MAX_ITEMS) {
+        callback?.("Storage limit exceeded", false);
+
+        return cloudStorage;
+      }
+
+      storage[key] = value;
+      writeCloudStorage(storage);
+      callback?.(null, true);
+
+      return cloudStorage;
+    },
+    getItem: (key, callback) => {
+      const keyError = validateCloudStorageKey(key);
+
+      if (keyError) {
+        callback(keyError, "");
+
+        return cloudStorage;
+      }
+
+      callback(null, readCloudStorage()[key] ?? "");
+
+      return cloudStorage;
+    },
+    getItems: (keys, callback) => {
+      const keyError = validateCloudStorageKeys(keys);
+
+      if (keyError) {
+        callback(keyError, {});
+
+        return cloudStorage;
+      }
+
+      const storage = readCloudStorage();
+
+      callback(
+        null,
+        Object.fromEntries(keys.map((key) => [key, storage[key] ?? ""])),
+      );
+
+      return cloudStorage;
+    },
+    removeItem: (key, callback) => {
+      const keyError = validateCloudStorageKey(key);
+
+      if (keyError) {
+        callback?.(keyError, false);
+
+        return cloudStorage;
+      }
+
+      const storage = readCloudStorage();
+
+      delete storage[key];
+      writeCloudStorage(storage);
+      callback?.(null, true);
+
+      return cloudStorage;
+    },
+    removeItems: (keys, callback) => {
+      const keyError = validateCloudStorageKeys(keys);
+
+      if (keyError) {
+        callback?.(keyError, false);
+
+        return cloudStorage;
+      }
+
+      const storage = readCloudStorage();
+
+      keys.forEach((key) => {
+        delete storage[key];
+      });
+      writeCloudStorage(storage);
+      callback?.(null, true);
+
+      return cloudStorage;
+    },
+    getKeys: (callback) => {
+      callback(null, Object.keys(readCloudStorage()));
+
+      return cloudStorage;
+    },
+  };
+
+  return cloudStorage;
 };
 
 const toHex = (buffer: ArrayBuffer) => {
@@ -115,6 +308,7 @@ export const installTelegramMock = async () => {
         query_id: "local-query-id",
         user: mockUser,
       },
+      CloudStorage: createTelegramCloudStorageMock(),
       ready: () => undefined,
       expand: () => undefined,
     },

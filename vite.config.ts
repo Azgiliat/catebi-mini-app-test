@@ -2,15 +2,31 @@ import { fileURLToPath, URL } from "node:url";
 
 import tailwindcss from "@tailwindcss/vite";
 import vue from "@vitejs/plugin-vue";
-import { defineConfig } from "vite";
+import { defineConfig, type Plugin } from "vite";
 import vueDevTools from "vite-plugin-vue-devtools";
 
 import { svgSpritePlugin } from "./plugins/svg-sprite.ts";
 
+const telegramWebAppScriptPlugin = (): Plugin => ({
+  name: "telegram-web-app-script",
+  transformIndexHtml(html) {
+    return html.replace(
+      "</head>",
+      '    <script src="https://telegram.org/js/telegram-web-app.js"></script>\n  </head>',
+    );
+  },
+});
+
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   base: process.env.GITHUB_PAGES === "true" ? "/catebi-mini-app-test/" : "/",
-  plugins: [svgSpritePlugin(), tailwindcss(), vue(), vueDevTools()],
+  plugins: [
+    mode === "production" && telegramWebAppScriptPlugin(),
+    svgSpritePlugin(),
+    tailwindcss(),
+    vue(),
+    vueDevTools(),
+  ],
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
@@ -24,4 +40,4 @@ export default defineConfig({
       },
     },
   },
-});
+}));

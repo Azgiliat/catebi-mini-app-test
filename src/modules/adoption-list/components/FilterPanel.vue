@@ -2,7 +2,10 @@
   <div
     class="grid min-h-0 flex-1 grid-cols-[157px_1fr] border-b border-gray-200"
   >
-    <nav class="border-r border-gray-200 bg-white" aria-label="Filter groups">
+    <nav
+      class="border-r border-gray-200 bg-white"
+      aria-label="Filter groups"
+    >
       <button
         v-for="(group, index) in filters"
         :key="group.label"
