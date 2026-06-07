@@ -6,7 +6,7 @@ export const useLikesStore = defineStore("likes", () => {
   const likes = ref(new Set<string>([]));
 
   window.Telegram.WebApp.CloudStorage.getItem("likes", (error, cloudValue) => {
-    if (!error) {
+    if (!error && cloudValue) {
       likes.value = new Set(JSON.parse(cloudValue));
       isLikesLoaded.value = true;
     }

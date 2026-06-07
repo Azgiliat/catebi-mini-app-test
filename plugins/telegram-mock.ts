@@ -2,11 +2,14 @@ import { LOCAL_TELEGRAM_DEV_BOT_TOKEN } from "../mock/shared/telegram-dev-auth";
 
 type WebAppUser = {
   id: number;
+  is_bot?: boolean;
   first_name: string;
   last_name?: string;
   username?: string;
   language_code?: string;
   is_premium?: boolean;
+  added_to_attachment_menu?: boolean;
+  allows_write_to_pm?: boolean;
   photo_url?: string;
 };
 
@@ -59,12 +62,16 @@ declare global {
 }
 
 const mockUser: WebAppUser = {
-  id: 123456789,
-  first_name: "Local",
-  last_name: "User",
-  username: "local_catebi_user",
+  id: 987654321,
+  is_bot: false,
+  first_name: "Anton",
+  last_name: "Sapovalov",
+  username: "anton_sapovalov",
   language_code: "ru",
-  photo_url: "https://t.me/i/userpic/320/local_catebi_user.jpg",
+  is_premium: true,
+  added_to_attachment_menu: false,
+  allows_write_to_pm: true,
+  photo_url: "https://t.me/i/userpic/320/anton_sapovalov.jpg",
 };
 
 const CLOUD_STORAGE_LOCAL_STORAGE_KEY = "catebi:telegram-cloud-storage";
