@@ -2,7 +2,6 @@
 import { cloneVNode, h, ref, type VNode } from "vue";
 
 import Icon from "@/common/components/Icon.vue";
-import { isInsideTelegram } from "@/common/constants/isInsideTelegram.ts";
 
 defineProps<{
   title: string;
@@ -42,8 +41,7 @@ const ModalWithClose = () =>
         aria-labelledby="filter-title"
       >
         <header
-          class="flex items-center justify-between border-b border-gray-200 p-4"
-          :class="isInsideTelegram ? 'pt-tg-safe-top' : 'pt-4'"
+          class="pt-tg-safe-top flex items-center justify-between border-b border-gray-200 p-4"
         >
           <h2
             id="filter-title"

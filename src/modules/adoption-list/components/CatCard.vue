@@ -23,6 +23,7 @@
               ? `Remove ${cat.name} from liked cats`
               : `Add ${cat.name} to liked cats`
           "
+          @click="onLikeClick()"
         >
           <Icon
             class="size-full"
@@ -66,4 +67,12 @@ const likesStore = useLikesStore();
 const likes = toRef(() => likesStore.likes);
 
 const isCatLiked = computed(() => likes.value.has(props.cat.name));
+
+function onLikeClick() {
+  if (isCatLiked.value) {
+    likesStore.unlikeCat(props.cat.name);
+  } else {
+    likesStore.likeCat(props.cat.name);
+  }
+}
 </script>
