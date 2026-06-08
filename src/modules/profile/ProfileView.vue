@@ -1,28 +1,26 @@
 <template>
-  <section class="px-4 py-4">
-    <h1 class="text-2xl leading-8 font-medium text-gray-800">
-      {{ t("profile.title") }}
-    </h1>
-    <div class="mt-4 rounded border border-gray-200 bg-white p-4">
+  <section class="p-4">
+    <div class="bg-catebi rounded-2xl border border-gray-200 p-6">
       <div class="flex items-center gap-3">
-        <img
+        <div
           v-if="imageUrl"
-          :src="imageUrl"
-          :alt="fullName"
-          class="size-14 rounded-full object-cover"
-        />
+          class="size-14 rounded-full bg-white/30"
+        >
+          <img
+            :src="imageUrl"
+            :alt="fullName"
+            class="object-cover"
+          />
+        </div>
         <div
           v-else
-          class="bg-catebi-light text-catebi grid size-14 place-items-center rounded-full text-xl font-semibold"
+          class="bg-catebi-light grid size-14 place-items-center rounded-full text-xl font-semibold text-white"
         >
           {{ initials }}
         </div>
         <div>
           <p class="text-lg leading-7 text-gray-900">
             {{ fullName }}
-          </p>
-          <p class="text-sm leading-5 text-gray-600">
-            {{ t("profile.role") }}
           </p>
         </div>
       </div>
