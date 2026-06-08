@@ -3,7 +3,7 @@
     "homeAriaLabel": "Catebi home",
     "navigation": {
       "cats": "Cats",
-      "profile": "Profile"
+      "favourites": "Favourites"
     }
   },
   "adoptionList": {
@@ -52,16 +52,10 @@
   "common": {
     "closeFiltersAriaLabel": "Close filters"
   },
-  "profile": {
-    "title": "Profile",
-    "role": "Adoption applicant",
-    "items": {
-      "likedCats": "Liked cats",
-      "applications": "Applications"
-    },
-    "values": {
-      "none": "None",
-      "applicationsActive": "1 active"
-    }
+  "favourites": {
+    "title": "Favourites",
+    "subtitle": "Your favorite cats",
+    "catsInFavourites": "{count} cats in favorites",
+    "empty": "No favorite cats yet"
   }
 }

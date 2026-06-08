@@ -58,7 +58,7 @@ import Icon from "@/common/components/Icon.vue";
 import MobileModal from "@/common/components/MobileModal.vue";
 import { useCatsStore } from "@/stores/cats.store.ts";
 
-import CatCard from "./components/CatCard.vue";
+import CatCard from "../../common/components/CatCard.vue";
 import FilterPanel from "./components/FilterPanel.vue";
 import type { FilterGroup, FilterSelection } from "./types";
 
@@ -139,6 +139,4 @@ function selectDraftFilter(groupLabel: string, option: string | null) {
     [groupLabel]: option,
   };
 }
-
-onMounted(catsStore.load);
 </script>

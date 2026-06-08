@@ -3,7 +3,7 @@
     "homeAriaLabel": "На главную Catebi",
     "navigation": {
       "cats": "Коты",
-      "profile": "Профиль"
+      "favourites": "Избранное"
     }
   },
   "adoptionList": {
@@ -52,16 +52,10 @@
   "common": {
     "closeFiltersAriaLabel": "Закрыть фильтры"
   },
-  "profile": {
-    "title": "Профиль",
-    "role": "Кандидат на усыновление",
-    "items": {
-      "likedCats": "Понравившиеся коты",
-      "applications": "Заявки"
-    },
-    "values": {
-      "none": "Нет",
-      "applicationsActive": "1 активная"
-    }
+  "favourites": {
+    "title": "Избранное",
+    "subtitle": "Ваши любимые коты",
+    "catsInFavourites": "Котов в избранном: {count}",
+    "empty": "В избранном пока нет котов"
   }
 }

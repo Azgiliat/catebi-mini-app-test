@@ -56,9 +56,9 @@ import { computed, toRef } from "vue";
 import { useI18n } from "vue-i18n";
 
 import Icon from "@/common/components/Icon.vue";
-import { useLikesStore } from "@/stores/likes.store.ts";
+import { useLikesStore } from "@/stores/likes.store.js";
 
-import type { Cat } from "../types";
+import type { Cat } from "../../modules/adoption-list/types";
 
 const props = defineProps<{
   cat: Cat;

@@ -34,7 +34,7 @@
           :class="isActive(item.routeName) ? 'text-catebi' : 'text-gray-600'"
         >
           <Icon
-            class="size-6"
+            class="size-6 fill-current stroke-current"
             :name="item.icon"
             aria-hidden="true"
           />
@@ -46,23 +46,28 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from "vue";
 import { useI18n } from "vue-i18n";
 import { RouterLink, RouterView, useRoute } from "vue-router";
+
+import {
+  FAVOURITES_ROUTE_NAMES,
+  type FavouritesRouteName,
+} from "@/modules/favourites/route-names";
+import { useCatsStore } from "@/stores/cats.store.ts";
 
 import Icon from "./common/components/Icon.vue";
 import {
   ADOPTION_LIST_ROUTE_NAMES,
   type AdoptionListRouteName,
 } from "./modules/adoption-list/route-names";
-import {
-  PROFILE_ROUTE_NAMES,
-  type ProfileRouteName,
-} from "./modules/profile/route-names";
 
 const route = useRoute();
 const { t } = useI18n();
 
-type RouteName = AdoptionListRouteName | ProfileRouteName;
+const catsStore = useCatsStore();
+
+type RouteName = AdoptionListRouteName | FavouritesRouteName;
 
 interface NavigationItem {
   routeName: RouteName;
@@ -70,7 +75,7 @@ interface NavigationItem {
     name: RouteName;
   };
   labelKey: string;
-  icon: "cats" | "profile";
+  icon: "cats" | "heart";
 }
 
 const navigation: NavigationItem[] = [
@@ -81,14 +86,16 @@ const navigation: NavigationItem[] = [
     icon: "cats",
   },
   {
-    routeName: PROFILE_ROUTE_NAMES.PROFILE,
-    to: { name: PROFILE_ROUTE_NAMES.PROFILE },
-    labelKey: "app.navigation.profile",
-    icon: "profile",
+    routeName: FAVOURITES_ROUTE_NAMES.FAVOURITES,
+    to: { name: FAVOURITES_ROUTE_NAMES.FAVOURITES },
+    labelKey: "app.navigation.favourites",
+    icon: "heart",
   },
 ];
 
 function isActive(routeName: RouteName) {
   return route.name === routeName;
 }
+
+onMounted(catsStore.load);
 </script>

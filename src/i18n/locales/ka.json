@@ -3,7 +3,7 @@
     "homeAriaLabel": "Catebi მთავარი გვერდი",
     "navigation": {
       "cats": "კატები",
-      "profile": "პროფილი"
+      "favourites": "რჩეულები"
     }
   },
   "adoptionList": {
@@ -52,16 +52,10 @@
   "common": {
     "closeFiltersAriaLabel": "ფილტრების დახურვა"
   },
-  "profile": {
-    "title": "პროფილი",
-    "role": "შვილად აყვანის კანდიდატი",
-    "items": {
-      "likedCats": "მოწონებული კატები",
-      "applications": "განაცხადები"
-    },
-    "values": {
-      "none": "არ არის",
-      "applicationsActive": "1 აქტიური"
-    }
+  "favourites": {
+    "title": "რჩეულები",
+    "subtitle": "თქვენი რჩეული კატები",
+    "catsInFavourites": "რჩეულებშია {count} კატა",
+    "empty": "რჩეულებში კატები ჯერ არ არის"
   }
 }
