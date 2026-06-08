@@ -11,9 +11,6 @@
           {{ t("favourites.title") }}
         </h1>
       </div>
-      <p class="mt-2 text-base leading-6 text-gray-600">
-        {{ t("favourites.subtitle") }}
-      </p>
     </div>
 
     <p class="mt-6 text-sm leading-5 text-gray-600">

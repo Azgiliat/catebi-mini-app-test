@@ -54,7 +54,6 @@
   },
   "favourites": {
     "title": "რჩეულები",
-    "subtitle": "თქვენი რჩეული კატები",
     "catsInFavourites": "რჩეულებშია {count} კატა",
     "empty": "რჩეულებში კატები ჯერ არ არის"
   }

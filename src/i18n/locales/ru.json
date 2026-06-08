@@ -3,7 +3,7 @@
     "homeAriaLabel": "На главную Catebi",
     "navigation": {
       "cats": "Коты",
-      "favourites": "Избранное"
+      "favourites": "Понравившиеся"
     }
   },
   "adoptionList": {
@@ -53,8 +53,7 @@
     "closeFiltersAriaLabel": "Закрыть фильтры"
   },
   "favourites": {
-    "title": "Избранное",
-    "subtitle": "Ваши любимые коты",
+    "title": "Понравившиеся",
     "catsInFavourites": "Котов в избранном: {count}",
     "empty": "В избранном пока нет котов"
   }

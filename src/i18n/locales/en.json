@@ -54,7 +54,6 @@
   },
   "favourites": {
     "title": "Favourites",
-    "subtitle": "Your favorite cats",
     "catsInFavourites": "{count} cats in favorites",
     "empty": "No favorite cats yet"
   }
