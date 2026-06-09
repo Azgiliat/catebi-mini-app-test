@@ -14,9 +14,11 @@ const cat = computed(() => {
 
 <template>
   <section v-if="cat">
-    <div class="bg-catebi-light flex max-h-96 items-center justify-center">
+    <div
+      class="bg-catebi-light flex max-h-96 flex-col items-center justify-center"
+    >
       <img
-        class="block w-auto"
+        class="block min-h-0"
         :alt="cat.name"
         :src="cat.image"
       />
