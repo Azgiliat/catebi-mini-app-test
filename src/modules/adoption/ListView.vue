@@ -2,14 +2,14 @@
   <section class="px-4 py-4">
     <div class="flex items-center justify-between gap-4">
       <h1 class="text-2xl leading-8 font-medium text-gray-800">
-        {{ t("adoptionList.title") }}
+        {{ t("adoption.title") }}
       </h1>
-      <MobileModal :title="t('adoptionList.filtersTitle')">
+      <MobileModal :title="t('adoption.filtersTitle')">
         <template #anchor>
           <button
             class="relative grid size-10 place-items-center rounded-full text-gray-800 transition-colors hover:bg-gray-100"
             type="button"
-            :aria-label="t('adoptionList.openFiltersAriaLabel')"
+            :aria-label="t('adoption.openFiltersAriaLabel')"
           >
             <Icon
               class="size-6"
@@ -38,7 +38,7 @@
     </div>
 
     <p class="mt-3 pt-1 text-sm leading-5 text-gray-700">
-      {{ t("adoptionList.catsFound", { count: filteredCats.length }) }}
+      {{ t("adoption.catsFound", { count: filteredCats.length }) }}
     </p>
     <div class="mt-3 grid grid-cols-2 gap-x-4 gap-y-4">
       <CatCard
@@ -51,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue";
+import { computed, type Ref,ref } from "vue";
 import { useI18n } from "vue-i18n";
 
 import Icon from "@/common/components/Icon.vue";
@@ -64,38 +64,32 @@ import type { FilterGroup, FilterSelection } from "./types";
 
 const { t } = useI18n();
 
-const filters: FilterGroup[] = [
+const catsStore = useCatsStore();
+const filters: Ref<FilterGroup[]> = computed(() => [
   {
     key: "sex",
-    labelKey: "adoptionList.filterGroups.sex",
-    options: ["adoptionList.values.sex.male", "adoptionList.values.sex.female"],
+    labelKey: "adoption.filterGroups.sex",
+    optionLabelPrefix: "sex",
+    options: ["m", "f"],
   },
   {
     key: "age",
-    labelKey: "adoptionList.filterGroups.age",
+    labelKey: "adoption.filterGroups.age",
     options: [
-      "adoptionList.values.age.sixMonths",
-      "adoptionList.values.age.threeMonths",
-      "adoptionList.values.age.twoYears",
-      "adoptionList.values.age.fourMonths",
-      "adoptionList.values.age.fiveMonths",
-      "adoptionList.values.age.oneYear",
+      "adoption.values.age.sixMonths",
+      "adoption.values.age.threeMonths",
+      "adoption.values.age.twoYears",
+      "adoption.values.age.fourMonths",
+      "adoption.values.age.fiveMonths",
+      "adoption.values.age.oneYear",
     ],
   },
   {
     key: "color",
-    labelKey: "adoptionList.filterGroups.color",
-    options: [
-      "adoptionList.values.color.brownTabby",
-      "adoptionList.values.color.orangeTabby",
-      "adoptionList.values.color.calico",
-      "adoptionList.values.color.whiteWithBlackPatches",
-      "adoptionList.values.color.silverTabby",
-      "adoptionList.values.color.blackAndBrownMix",
-    ],
+    labelKey: "adoption.filterGroups.color",
+    options: Array.from(catsStore.availableColors),
   },
-];
-const catsStore = useCatsStore();
+]);
 
 const cats = computed(() => catsStore.cats);
 const isFilterPanelOpen = ref(false);
@@ -108,7 +102,7 @@ const activeFilterCount = computed(
 
 const filteredCats = computed(() =>
   cats.value.filter((cat) =>
-    filters.every((filter) => {
+    filters.value.every((filter) => {
       const value = appliedFilters.value[filter.labelKey];
 
       return !value || cat[filter.key] === value;
@@ -117,7 +111,9 @@ const filteredCats = computed(() =>
 );
 
 function createEmptyFilters(): FilterSelection {
-  return Object.fromEntries(filters.map((filter) => [filter.labelKey, null]));
+  return Object.fromEntries(
+    filters.value.map((filter) => [filter.labelKey, null]),
+  );
 }
 
 function closeFilters() {

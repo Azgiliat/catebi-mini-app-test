@@ -1,4 +1,4 @@
-import { Cat } from "@/modules/adoption-list/types.ts";
+import type { Cat } from "@/modules/adoption/types.ts";
 
 import { cats } from "../../mock/server/routes/cats.mock.ts";
 

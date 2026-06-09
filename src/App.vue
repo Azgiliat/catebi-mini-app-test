@@ -8,7 +8,7 @@
       >
         <RouterLink
           class="flex items-center gap-2 text-white"
-          :to="{ name: ADOPTION_LIST_ROUTE_NAMES.ADOPTION_LIST }"
+          :to="{ name: ADOPTION_ROUTE_NAMES.ADOPTION }"
           :aria-label="t('app.homeAriaLabel')"
         >
           <Icon
@@ -58,16 +58,16 @@ import { useCatsStore } from "@/stores/cats.store.ts";
 
 import Icon from "./common/components/Icon.vue";
 import {
-  ADOPTION_LIST_ROUTE_NAMES,
-  type AdoptionListRouteName,
-} from "./modules/adoption-list/route-names";
+  ADOPTION_ROUTE_NAMES,
+  type AdoptionRouteName,
+} from "./modules/adoption/route-names";
 
 const route = useRoute();
 const { t } = useI18n();
 
 const catsStore = useCatsStore();
 
-type RouteName = AdoptionListRouteName | FavouritesRouteName;
+type RouteName = AdoptionRouteName | FavouritesRouteName;
 
 interface NavigationItem {
   routeName: RouteName;
@@ -80,8 +80,8 @@ interface NavigationItem {
 
 const navigation: NavigationItem[] = [
   {
-    routeName: ADOPTION_LIST_ROUTE_NAMES.ADOPTION_LIST,
-    to: { name: ADOPTION_LIST_ROUTE_NAMES.ADOPTION_LIST },
+    routeName: ADOPTION_ROUTE_NAMES.ADOPTION,
+    to: { name: ADOPTION_ROUTE_NAMES.ADOPTION },
     labelKey: "app.navigation.cats",
     icon: "cats",
   },

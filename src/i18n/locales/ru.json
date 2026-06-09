@@ -6,16 +6,13 @@
       "favourites": "Понравившиеся"
     }
   },
-  "adoptionList": {
+  "adoption": {
     "title": "Ищут дом",
+    "about": "О коте",
     "filtersTitle": "Фильтры",
     "openFiltersAriaLabel": "Открыть фильтры",
     "catsFound": "Найдено котов: {count}",
     "values": {
-      "sex": {
-        "female": "Девочка",
-        "male": "Мальчик"
-      },
       "age": {
         "sixMonths": "6 месяцев",
         "threeMonths": "3 месяца",
@@ -51,6 +48,10 @@
   },
   "common": {
     "closeFiltersAriaLabel": "Закрыть фильтры"
+  },
+  "sex": {
+    "f": "Девочка",
+    "m": "Мальчик"
   },
   "favourites": {
     "title": "Понравившиеся",

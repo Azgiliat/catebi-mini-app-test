@@ -6,16 +6,13 @@
       "favourites": "Favourites"
     }
   },
-  "adoptionList": {
+  "adoption": {
     "title": "Available for Adoption",
+    "about": "About",
     "filtersTitle": "Filters",
     "openFiltersAriaLabel": "Open filters",
     "catsFound": "{count} cats found",
     "values": {
-      "sex": {
-        "female": "Female",
-        "male": "Male"
-      },
       "age": {
         "sixMonths": "6 months",
         "threeMonths": "3 months",
@@ -51,6 +48,10 @@
   },
   "common": {
     "closeFiltersAriaLabel": "Close filters"
+  },
+  "sex": {
+    "f": "Female",
+    "m": "Male"
   },
   "favourites": {
     "title": "Favourites",

@@ -4,7 +4,7 @@
   >
     <nav
       class="border-r border-gray-200 bg-white"
-      :aria-label="t('adoptionList.filterPanel.groupsAriaLabel')"
+      :aria-label="t('adoption.filterPanel.groupsAriaLabel')"
     >
       <button
         v-for="(group, index) in filters"
@@ -66,14 +66,14 @@
       type="button"
       @click="$emit('clear')"
     >
-      {{ t("adoptionList.filterPanel.clear") }}
+      {{ t("adoption.filterPanel.clear") }}
     </button>
     <button
       class="bg-catebi hover:bg-catebi-dark h-12 rounded-lg text-base leading-6 text-white transition-colors"
       type="button"
       @click="apply"
     >
-      {{ t("adoptionList.filterPanel.apply") }}
+      {{ t("adoption.filterPanel.apply") }}
     </button>
   </footer>
 </template>
@@ -115,7 +115,15 @@ function isSelected(option: string) {
 }
 
 function getOptionLabel(option: string) {
-  return option === ANY_OPTION ? t("adoptionList.filterPanel.any") : t(option);
+  if (option === ANY_OPTION) {
+    return t("adoption.filterPanel.any");
+  }
+
+  return t(
+    activeGroup.value.optionLabelPrefix
+      ? `${activeGroup.value.optionLabelPrefix}.${option}`
+      : option,
+  );
 }
 
 function selectOption(option: string) {

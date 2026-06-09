@@ -31,6 +31,7 @@ const normalizeLocale = (languageCode?: string): SupportedLocale => {
 
 export const createAppI18n = () =>
   createI18n({
+    legacy: false,
     locale: normalizeLocale(
       window.Telegram.WebApp.initDataUnsafe.user.language_code,
     ),

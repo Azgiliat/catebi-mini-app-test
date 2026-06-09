@@ -2,14 +2,22 @@
   <article
     class="group overflow-hidden rounded-[10px] border border-gray-100 bg-white shadow-md transition-shadow duration-200 focus-within:shadow-lg hover:shadow-lg"
   >
-    <div class="relative overflow-hidden bg-gray-100">
+    <router-link
+      :to="{
+        name: ADOPTION_ROUTE_NAMES.CAT,
+        params: {
+          cat: cat.name,
+        },
+      }"
+      class="relative overflow-hidden bg-gray-100"
+    >
       <img
         class="aspect-square w-full object-cover"
         :src="cat.image"
         :alt="cat.name"
         loading="lazy"
       />
-    </div>
+    </router-link>
     <div class="p-3">
       <div class="flex items-center gap-2">
         <h2 class="truncate text-lg leading-7 font-normal text-gray-900">
@@ -36,7 +44,7 @@
         </button>
       </div>
       <p class="mt-1 flex items-center gap-2 text-sm leading-5 text-gray-600">
-        <span>{{ t(cat.sex) }}</span>
+        <span>{{ t(`sex.${cat.sex}`) }}</span>
         <span class="text-base leading-none text-gray-400">&bull;</span>
         <span>{{ t(cat.age) }}</span>
       </p>
@@ -56,9 +64,10 @@ import { computed, toRef } from "vue";
 import { useI18n } from "vue-i18n";
 
 import Icon from "@/common/components/Icon.vue";
+import { ADOPTION_ROUTE_NAMES } from "@/modules/adoption/route-names.ts";
 import { useLikesStore } from "@/stores/likes.store.js";
 
-import type { Cat } from "../../modules/adoption-list/types";
+import type { Cat } from "../../modules/adoption/types";
 
 const props = defineProps<{
   cat: Cat;

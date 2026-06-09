@@ -6,16 +6,13 @@
       "favourites": "რჩეულები"
     }
   },
-  "adoptionList": {
+  "adoption": {
     "title": "ეძებენ სახლს",
+    "about": "შესახებ",
     "filtersTitle": "ფილტრები",
     "openFiltersAriaLabel": "ფილტრების გახსნა",
     "catsFound": "ნაპოვნია {count} კატა",
     "values": {
-      "sex": {
-        "female": "მდედრი",
-        "male": "მამრი"
-      },
       "age": {
         "sixMonths": "6 თვე",
         "threeMonths": "3 თვე",
@@ -51,6 +48,10 @@
   },
   "common": {
     "closeFiltersAriaLabel": "ფილტრების დახურვა"
+  },
+  "sex": {
+    "f": "მდედრი",
+    "m": "მამრი"
   },
   "favourites": {
     "title": "რჩეულები",

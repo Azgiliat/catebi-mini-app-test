@@ -1,11 +1,15 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 import { loadCats } from "@/api/loadCats.ts";
-import type { Cat } from "@/modules/adoption-list/types.ts";
+import type { Cat } from "@/modules/adoption/types.ts";
 
 export const useCatsStore = defineStore("cats", () => {
   const cats = ref<Cat[]>([]);
+
+  const availableColors = computed(
+    () => new Set(cats.value.map((cat) => cat.color)),
+  );
 
   async function load() {
     try {
@@ -18,5 +22,6 @@ export const useCatsStore = defineStore("cats", () => {
   return {
     load,
     cats,
+    availableColors,
   };
 });
