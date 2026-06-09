@@ -68,13 +68,13 @@ const catsStore = useCatsStore();
 const filters: Ref<FilterGroup[]> = computed(() => [
   {
     key: "sex",
-    labelKey: "adoption.filterGroups.sex",
+    labelKey: "sex.label",
     optionLabelPrefix: "sex",
     options: ["m", "f"],
   },
   {
     key: "age",
-    labelKey: "adoption.filterGroups.age",
+    labelKey: "age.label",
     options: [
       "adoption.values.age.sixMonths",
       "adoption.values.age.threeMonths",
@@ -86,7 +86,7 @@ const filters: Ref<FilterGroup[]> = computed(() => [
   },
   {
     key: "color",
-    labelKey: "adoption.filterGroups.color",
+    labelKey: "color.label",
     options: Array.from(catsStore.availableColors),
   },
 ]);

@@ -2,8 +2,7 @@
   "app": {
     "homeAriaLabel": "Catebi მთავარი გვერდი",
     "navigation": {
-      "cats": "კატები",
-      "favourites": "რჩეულები"
+      "cats": "კატები"
     }
   },
   "adoption": {
@@ -30,11 +29,6 @@
         "blackAndBrownMix": "შავი და ყავისფერი მიქსი"
       }
     },
-    "filterGroups": {
-      "sex": "სქესი",
-      "age": "ასაკი",
-      "color": "ფერი"
-    },
     "filterPanel": {
       "groupsAriaLabel": "ფილტრების ჯგუფები",
       "any": "ნებისმიერი",
@@ -50,8 +44,15 @@
     "closeFiltersAriaLabel": "ფილტრების დახურვა"
   },
   "sex": {
+    "label": "სქესი",
     "f": "მდედრი",
     "m": "მამრი"
+  },
+  "age": {
+    "label": "ასაკი"
+  },
+  "color": {
+    "label": "ფერი"
   },
   "favourites": {
     "title": "რჩეულები",

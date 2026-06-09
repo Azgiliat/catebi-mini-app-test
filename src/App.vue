@@ -88,7 +88,7 @@ const navigation: NavigationItem[] = [
   {
     routeName: FAVOURITES_ROUTE_NAMES.FAVOURITES,
     to: { name: FAVOURITES_ROUTE_NAMES.FAVOURITES },
-    labelKey: "app.navigation.favourites",
+    labelKey: "favourites.title",
     icon: "heart",
   },
 ];

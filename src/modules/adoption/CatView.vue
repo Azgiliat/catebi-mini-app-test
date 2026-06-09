@@ -27,11 +27,11 @@ const cat = computed(() => {
       </h2>
       <div class="mb-4 flex justify-between gap-3">
         <div class="grow rounded-l bg-gray-50 p-3">
-          <h3>{{ $t("adoption.filterGroups.sex") }}</h3>
+          <h3>{{ $t("sex.label") }}</h3>
           {{ $t(`sex.${cat.sex}`) }}
         </div>
         <div class="grow rounded-l bg-gray-50 p-3">
-          <h3>{{ $t("adoption.filterGroups.age") }}</h3>
+          <h3>{{ $t("age.label") }}</h3>
           {{ $t(cat.age) }}
         </div>
       </div>

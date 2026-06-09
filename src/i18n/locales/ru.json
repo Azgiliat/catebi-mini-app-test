@@ -2,8 +2,7 @@
   "app": {
     "homeAriaLabel": "На главную Catebi",
     "navigation": {
-      "cats": "Коты",
-      "favourites": "Понравившиеся"
+      "cats": "Коты"
     }
   },
   "adoption": {
@@ -30,11 +29,6 @@
         "blackAndBrownMix": "Черно-коричневый микс"
       }
     },
-    "filterGroups": {
-      "sex": "Пол",
-      "age": "Возраст",
-      "color": "Окрас"
-    },
     "filterPanel": {
       "groupsAriaLabel": "Группы фильтров",
       "any": "Любой",
@@ -50,8 +44,15 @@
     "closeFiltersAriaLabel": "Закрыть фильтры"
   },
   "sex": {
+    "label": "Пол",
     "f": "Девочка",
     "m": "Мальчик"
+  },
+  "age": {
+    "label": "Возраст"
+  },
+  "color": {
+    "label": "Окрас"
   },
   "favourites": {
     "title": "Понравившиеся",

@@ -2,8 +2,7 @@
   "app": {
     "homeAriaLabel": "Catebi home",
     "navigation": {
-      "cats": "Cats",
-      "favourites": "Favourites"
+      "cats": "Cats"
     }
   },
   "adoption": {
@@ -30,11 +29,6 @@
         "blackAndBrownMix": "Black and Brown Mix"
       }
     },
-    "filterGroups": {
-      "sex": "Sex",
-      "age": "Age",
-      "color": "Color"
-    },
     "filterPanel": {
       "groupsAriaLabel": "Filter groups",
       "any": "Any",
@@ -50,8 +44,15 @@
     "closeFiltersAriaLabel": "Close filters"
   },
   "sex": {
+    "label": "Sex",
     "f": "Female",
     "m": "Male"
+  },
+  "age": {
+    "label": "Age"
+  },
+  "color": {
+    "label": "Color"
   },
   "favourites": {
     "title": "Favourites",
