@@ -1,0 +1,84 @@
+{
+  "app": {
+    "homeAriaLabel": "Catebi მთავარი გვერდი",
+    "navigation": {
+      "cats": "კატები"
+    }
+  },
+  "adoption": {
+    "title": "ეძებენ სახლს",
+    "about": "შესახებ",
+    "adopt": "{name}-ის აყვანა",
+    "backToCats": "კატების სიაში დაბრუნება",
+    "catNotFound": "კატა ვერ მოიძებნა",
+    "filtersTitle": "ფილტრები",
+    "openFiltersAriaLabel": "ფილტრების გახსნა",
+    "catsFound": "ნაპოვნია {count} კატა",
+    "values": {
+      "color": {
+        "brownTabby": "ყავისფერი ტაბი",
+        "orangeTabby": "ნარინჯისფერი ტაბი",
+        "calico": "სამფერიანი",
+        "whiteWithBlackPatches": "თეთრი შავი ლაქებით",
+        "silverTabby": "ვერცხლისფერი ტაბი",
+        "blackAndBrownMix": "შავი და ყავისფერი მიქსი"
+      }
+    },
+    "filterPanel": {
+      "groupsAriaLabel": "ფილტრების ჯგუფები",
+      "any": "ნებისმიერი",
+      "clear": "გასუფთავება",
+      "apply": "გამოყენება",
+      "age": {
+        "direction": "ასაკის შედარება",
+        "younger": "უმცროსი",
+        "older": "უფროსი",
+        "years": "წლები",
+        "months": "თვეები",
+        "yearsPlaceholder": "0",
+        "monthsPlaceholder": "0"
+      }
+    }
+  },
+  "catCard": {
+    "addToLikedAriaLabel": "{name}-ის დამატება მოწონებულებში",
+    "removeFromLikedAriaLabel": "{name}-ის ამოღება მოწონებულებიდან"
+  },
+  "common": {
+    "closeFiltersAriaLabel": "ფილტრების დახურვა"
+  },
+  "sex": {
+    "label": "სქესი",
+    "f": "მდედრი",
+    "m": "მამრი"
+  },
+  "age": {
+    "label": "ასაკი",
+    "years": {
+      "one": "{count} წელი",
+      "few": "{count} წელი",
+      "many": "{count} წელი",
+      "other": "{count} წელი"
+    },
+    "months": {
+      "one": "{count} თვე",
+      "few": "{count} თვე",
+      "many": "{count} თვე",
+      "other": "{count} თვე"
+    },
+    "lessThanMonth": "თვეზე ნაკლები"
+  },
+  "color": {
+    "label": "ფერი"
+  },
+  "favourites": {
+    "title": "რჩეულები",
+    "catsInFavourites": "რჩეულებშია {count} კატა",
+    "empty": "რჩეულებში კატები ჯერ არ არის"
+  },
+  "settings": {
+    "title": "პარამეტრები",
+    "description": "მართეთ თქვენი პარამეტრები",
+    "language": "ენა"
+  }
+}
