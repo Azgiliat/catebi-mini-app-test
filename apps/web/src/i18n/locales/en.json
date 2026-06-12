@@ -1,0 +1,84 @@
+{
+  "app": {
+    "homeAriaLabel": "Catebi home",
+    "navigation": {
+      "cats": "Cats"
+    }
+  },
+  "adoption": {
+    "title": "Available for Adoption",
+    "about": "About",
+    "adopt": "Adopt {name}",
+    "backToCats": "Back to cats",
+    "catNotFound": "Cat not found",
+    "filtersTitle": "Filters",
+    "openFiltersAriaLabel": "Open filters",
+    "catsFound": "{count} cats found",
+    "values": {
+      "color": {
+        "brownTabby": "Brown Tabby",
+        "orangeTabby": "Orange Tabby",
+        "calico": "Calico",
+        "whiteWithBlackPatches": "White with Black Patches",
+        "silverTabby": "Silver Tabby",
+        "blackAndBrownMix": "Black and Brown Mix"
+      }
+    },
+    "filterPanel": {
+      "groupsAriaLabel": "Filter groups",
+      "any": "Any",
+      "clear": "Clear Filters",
+      "apply": "Apply",
+      "age": {
+        "direction": "Age comparison",
+        "younger": "Younger",
+        "older": "Older",
+        "years": "Years",
+        "months": "Months",
+        "yearsPlaceholder": "0",
+        "monthsPlaceholder": "0"
+      }
+    }
+  },
+  "catCard": {
+    "addToLikedAriaLabel": "Add {name} to liked cats",
+    "removeFromLikedAriaLabel": "Remove {name} from liked cats"
+  },
+  "common": {
+    "closeFiltersAriaLabel": "Close filters"
+  },
+  "sex": {
+    "label": "Sex",
+    "f": "Female",
+    "m": "Male"
+  },
+  "age": {
+    "label": "Age",
+    "years": {
+      "one": "{count} year",
+      "few": "{count} years",
+      "many": "{count} years",
+      "other": "{count} years"
+    },
+    "months": {
+      "one": "{count} month",
+      "few": "{count} months",
+      "many": "{count} months",
+      "other": "{count} months"
+    },
+    "lessThanMonth": "Less than a month"
+  },
+  "color": {
+    "label": "Color"
+  },
+  "favourites": {
+    "title": "Favourites",
+    "catsInFavourites": "{count} cats in favorites",
+    "empty": "No favorite cats yet"
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Manage your preferences",
+    "language": "Language"
+  }
+}

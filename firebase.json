@@ -1,0 +1,21 @@
+{
+  "hosting": {
+    "predeploy": ["yarn build:web"],
+    "public": "apps/web/dist",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "/api/auth/telegram",
+        "function": "telegramAuth"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "functions": {
+    "predeploy": ["yarn build:api"],
+    "source": "apps/api"
+  }
+}
